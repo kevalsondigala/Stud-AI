@@ -6,6 +6,16 @@ interface User {
   name: string;
   role: 'student' | 'educator';
   avatar?: string;
+  onboardingComplete?: boolean;
+  profile?: {
+    class: string;
+    age: number;
+    subjects: string[];
+    division?: string;
+    rollNo?: string;
+  };
+  lastWeeklyTest?: string;
+  weeklyTestStreak?: number;
 }
 
 interface AuthContextType {
@@ -14,6 +24,9 @@ interface AuthContextType {
   login: (email: string, password: string, role: 'student' | 'educator') => Promise<void>;
   signup: (email: string, password: string, name: string, role: 'student' | 'educator') => Promise<void>;
   logout: () => void;
+  updateUser: (updates: Partial<User>) => void;
+  completeOnboarding: (profile: any, hasUploadedFiles: boolean) => void;
+  completeWeeklyTest: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -76,12 +89,49 @@ export function AuthProvider({ children }: AuthProviderProps) {
     localStorage.removeItem('studai_user');
   };
 
+  const updateUser = (updates: Partial<User>) => {
+    if (user) {
+      const updatedUser = { ...user, ...updates };
+      setUser(updatedUser);
+      localStorage.setItem('studai_user', JSON.stringify(updatedUser));
+    }
+  };
+
+  const completeOnboarding = (profile: any, hasUploadedFiles: boolean) => {
+    if (user && hasUploadedFiles) {
+      const updatedUser = { 
+        ...user, 
+        onboardingComplete: true, 
+        profile 
+      };
+      setUser(updatedUser);
+      localStorage.setItem('studai_user', JSON.stringify(updatedUser));
+    }
+  };
+
+  const completeWeeklyTest = () => {
+    if (user) {
+      const today = new Date().toISOString().split('T')[0];
+      const currentStreak = user.weeklyTestStreak || 0;
+      const updatedUser = { 
+        ...user, 
+        lastWeeklyTest: today,
+        weeklyTestStreak: currentStreak + 1
+      };
+      setUser(updatedUser);
+      localStorage.setItem('studai_user', JSON.stringify(updatedUser));
+    }
+  };
+
   const value = {
     user,
     loading,
     login,
     signup,
-    logout
+    logout,
+    updateUser,
+    completeOnboarding,
+    completeWeeklyTest
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

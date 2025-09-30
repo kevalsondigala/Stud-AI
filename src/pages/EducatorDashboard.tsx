@@ -5,7 +5,9 @@ import EducatorHome from '../components/educator/EducatorHome';
 import GeneratePapers from '../components/educator/GeneratePapers';
 import QuestionBank from '../components/educator/QuestionBank';
 import Analytics from '../components/educator/Analytics';
+import Chatbot from '../components/Chatbot';
 import { useAuth } from '../contexts/AuthContext';
+import { MessageCircle } from 'lucide-react';
 
 const educatorMenuItems = [
   { id: 'home', label: 'Home', icon: 'home', path: '/educator' },
@@ -17,6 +19,7 @@ const educatorMenuItems = [
 export default function EducatorDashboard() {
   const { user } = useAuth();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [chatbotOpen, setChatbotOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-50 flex">
@@ -36,6 +39,16 @@ export default function EducatorDashboard() {
             <Route path="/analytics" element={<Analytics />} />
           </Routes>
         </div>
+        
+        {/* Floating Chatbot Button */}
+        <button
+          onClick={() => setChatbotOpen(true)}
+          className="fixed bottom-6 right-6 w-14 h-14 bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition-all duration-300 hover:scale-110 z-40"
+        >
+          <MessageCircle className="h-6 w-6 mx-auto" />
+        </button>
+        
+        <Chatbot isOpen={chatbotOpen} onClose={() => setChatbotOpen(false)} />
       </div>
     </div>
   );

@@ -24,6 +24,16 @@ function AppRoutes() {
     return <AuthPage />;
   }
 
+  // Check if student needs onboarding
+  if (user.role === 'student' && !user.onboardingComplete) {
+    return <OnboardingPage />;
+  }
+
+  // Check if student needs weekly test
+  if (user.role === 'student' && needsWeeklyTest(user)) {
+    return <WeeklyTestPage />;
+  }
+
   return (
     <Routes>
       <Route 
@@ -39,6 +49,16 @@ function AppRoutes() {
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
+}
+
+function needsWeeklyTest(user: any): boolean {
+  if (!user.lastWeeklyTest) return true;
+  
+  const lastTest = new Date(user.lastWeeklyTest);
+  const today = new Date();
+  const daysDiff = Math.floor((today.getTime() - lastTest.getTime()) / (1000 * 60 * 60 * 24));
+  
+  return daysDiff >= 7;
 }
 
 function App() {

@@ -36,7 +36,9 @@ const iconMap = {
   results: BarChart3,
   generate: Zap,
   bank: Database,
-  analytics: BarChart3
+  analytics: BarChart3,
+  lightbulb: require('lucide-react').Lightbulb,
+  folder: require('lucide-react').Folder
 };
 
 export default function Sidebar({ menuItems, collapsed, onCollapse, user }: SidebarProps) {
