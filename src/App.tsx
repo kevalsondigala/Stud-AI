@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AuthPage from './pages/AuthPage';
+import OnboardingPage from './pages/OnboardingPage';
+import WeeklyTestPage from './pages/WeeklyTestPage';
 import StudentDashboard from './pages/StudentDashboard';
 import EducatorDashboard from './pages/EducatorDashboard';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
