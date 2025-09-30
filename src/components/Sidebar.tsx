@@ -11,7 +11,9 @@ import {
   Settings,
   LogOut,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Lightbulb,
+  Folder
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -37,8 +39,8 @@ const iconMap = {
   generate: Zap,
   bank: Database,
   analytics: BarChart3,
-  lightbulb: require('lucide-react').Lightbulb,
-  folder: require('lucide-react').Folder
+  lightbulb: Lightbulb,
+  folder: Folder
 };
 
 export default function Sidebar({ menuItems, collapsed, onCollapse, user }: SidebarProps) {
