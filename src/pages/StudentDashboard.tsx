@@ -7,6 +7,7 @@ import TakeTest from '../components/student/TakeTest';
 import Results from '../components/student/Results';
 import ProjectHelper from '../components/student/ProjectHelper';
 import MyFiles from '../components/student/MyFiles';
+import SubscriptionPage from './SubscriptionPage';
 import Chatbot from '../components/Chatbot';
 import { useAuth } from '../contexts/AuthContext';
 import { MessageCircle } from 'lucide-react';
@@ -17,7 +18,8 @@ const studentMenuItems = [
   { id: 'test', label: 'Take Test', icon: 'test', path: '/student/test' },
   { id: 'results', label: 'Results', icon: 'results', path: '/student/results' },
   { id: 'projects', label: 'Project Helper', icon: 'lightbulb', path: '/student/projects' },
-  { id: 'files', label: 'My Files', icon: 'folder', path: '/student/files' }
+  { id: 'files', label: 'My Files', icon: 'folder', path: '/student/files' },
+  { id: 'subscription', label: 'Subscription', icon: 'crown', path: '/student/subscription' }
 ];
 
 export default function StudentDashboard() {
@@ -43,6 +45,7 @@ export default function StudentDashboard() {
             <Route path="/results" element={<Results />} />
             <Route path="/projects" element={<ProjectHelper />} />
             <Route path="/files" element={<MyFiles />} />
+            <Route path="/subscription" element={<SubscriptionPage />} />
           </Routes>
         </div>
         

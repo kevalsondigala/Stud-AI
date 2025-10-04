@@ -5,6 +5,7 @@ import EducatorHome from '../components/educator/EducatorHome';
 import GeneratePapers from '../components/educator/GeneratePapers';
 import QuestionBank from '../components/educator/QuestionBank';
 import Analytics from '../components/educator/Analytics';
+import SubscriptionPage from './SubscriptionPage';
 import Chatbot from '../components/Chatbot';
 import { useAuth } from '../contexts/AuthContext';
 import { MessageCircle } from 'lucide-react';
@@ -13,7 +14,8 @@ const educatorMenuItems = [
   { id: 'home', label: 'Home', icon: 'home', path: '/educator' },
   { id: 'generate', label: 'Generate Papers', icon: 'generate', path: '/educator/generate' },
   { id: 'question-bank', label: 'Question Bank', icon: 'bank', path: '/educator/question-bank' },
-  { id: 'analytics', label: 'Analytics', icon: 'analytics', path: '/educator/analytics' }
+  { id: 'analytics', label: 'Analytics', icon: 'analytics', path: '/educator/analytics' },
+  { id: 'subscription', label: 'Subscription', icon: 'crown', path: '/educator/subscription' }
 ];
 
 export default function EducatorDashboard() {
@@ -37,6 +39,7 @@ export default function EducatorDashboard() {
             <Route path="/generate" element={<GeneratePapers />} />
             <Route path="/question-bank" element={<QuestionBank />} />
             <Route path="/analytics" element={<Analytics />} />
+            <Route path="/subscription" element={<SubscriptionPage />} />
           </Routes>
         </div>
         

@@ -15,7 +15,8 @@ import {
   Lightbulb,
   Folder,
   Sun,
-  Moon
+  Moon,
+  Crown
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -42,7 +43,8 @@ const iconMap = {
   bank: Database,
   analytics: BarChart3,
   lightbulb: Lightbulb,
-  folder: Folder
+  folder: Folder,
+  crown: Crown
 };
 
 export default function Sidebar({ menuItems, collapsed, onCollapse, user }: SidebarProps) {
