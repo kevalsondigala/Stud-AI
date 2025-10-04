@@ -13,7 +13,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Lightbulb,
-  Folder
+  Folder,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -44,7 +46,7 @@ const iconMap = {
 };
 
 export default function Sidebar({ menuItems, collapsed, onCollapse, user }: SidebarProps) {
-  const { logout } = useAuth();
+  const { logout, toggleTheme } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {

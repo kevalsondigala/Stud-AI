@@ -27,6 +27,7 @@ interface AuthContextType {
   updateUser: (updates: Partial<User>) => void;
   completeOnboarding: (profile: any, hasUploadedFiles: boolean) => void;
   completeWeeklyTest: () => void;
+  toggleTheme: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -124,6 +125,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   };
 
+  const toggleTheme = () => {
+    if (user) {
+      const newTheme = user.theme === 'dark' ? 'light' : 'dark';
+      const updatedUser = { ...user, theme: newTheme };
+      setUser(updatedUser);
+      localStorage.setItem('studai_user', JSON.stringify(updatedUser));
+    }
+  };
+
   const value = {
     user,
     loading,
@@ -132,7 +142,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     logout,
     updateUser,
     completeOnboarding,
-    completeWeeklyTest
+    completeWeeklyTest,
+    toggleTheme
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
