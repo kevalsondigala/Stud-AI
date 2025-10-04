@@ -32,8 +32,14 @@ export default function OnboardingPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const availableSubjects = [
-    'Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 
-    'History', 'Geography', 'Computer Science', 'Economics', 'Political Science'
+    // Core Subjects
+    'Mathematics', 'Physics', 'Chemistry', 'Biology', 'Computer Science',
+    // Language Subjects
+    'English', 'Hindi', 'Sanskrit', 'French', 'German', 'Spanish', 'Tamil', 'Telugu', 'Bengali', 'Marathi', 'Gujarati', 'Punjabi', 'Urdu',
+    // Social Sciences
+    'History', 'Geography', 'Political Science', 'Economics', 'Sociology', 'Psychology',
+    // Arts & Others
+    'Art', 'Music', 'Physical Education', 'Philosophy', 'Business Studies', 'Accountancy', 'Statistics'
   ];
 
   const handleSubjectToggle = (subject: string) => {
@@ -184,15 +190,15 @@ export default function OnboardingPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-3">
-                  Subjects * (Select at least one)
+                  Subjects * (Select your subjects - you can choose multiple)
                 </label>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-h-64 overflow-y-auto border border-gray-200 rounded-lg p-4">
                   {availableSubjects.map((subject) => (
                     <button
                       key={subject}
                       type="button"
                       onClick={() => handleSubjectToggle(subject)}
-                      className={`p-3 rounded-xl border-2 transition-all text-sm ${
+                      className={`p-2 rounded-lg border-2 transition-all text-xs ${
                         formData.subjects.includes(subject)
                           ? 'border-blue-500 bg-blue-50 text-blue-700'
                           : 'border-gray-200 hover:border-gray-300'
@@ -202,6 +208,9 @@ export default function OnboardingPage() {
                     </button>
                   ))}
                 </div>
+                <p className="text-xs text-gray-500 mt-2">
+                  Selected: {formData.subjects.length} subject{formData.subjects.length !== 1 ? 's' : ''}
+                </p>
               </div>
 
               <button

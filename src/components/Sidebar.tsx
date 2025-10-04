@@ -130,6 +130,21 @@ export default function Sidebar({ menuItems, collapsed, onCollapse, user }: Side
         {/* Footer */}
         <div className="p-4 border-t border-gray-200">
           <button
+            onClick={toggleTheme}
+            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors w-full mb-2"
+          >
+            {user?.theme === 'dark' ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+            {!collapsed && (
+              <span className="font-medium">
+                {user?.theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+              </span>
+            )}
+          </button>
+          <button
             className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors w-full"
           >
             <Settings className="h-5 w-5" />

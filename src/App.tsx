@@ -34,6 +34,13 @@ function App() {
 function AppRoutes() {
   const { user, loading } = useAuth();
 
+  // Apply theme on user change
+  useEffect(() => {
+    if (user?.theme) {
+      document.documentElement.classList.toggle('dark', user.theme === 'dark');
+    }
+  }, [user?.theme]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
