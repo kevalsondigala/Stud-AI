@@ -67,11 +67,11 @@ export default function StudentHome() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <div key={index} className="bg-white rounded-xl p-6 border border-gray-200">
+          <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">{stat.label}</p>
-                <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{stat.label}</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
               </div>
               <div className={`w-12 h-12 ${stat.color} rounded-lg flex items-center justify-center`}>
                 <stat.icon className="h-6 w-6 text-white" />
@@ -87,27 +87,27 @@ export default function StudentHome() {
           <Link
             key={index}
             to={action.link}
-            className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300 group"
+            className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 group"
           >
             <div className={`w-12 h-12 ${action.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
               <action.icon className="h-6 w-6 text-white" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">{action.title}</h3>
-            <p className="text-gray-600">{action.description}</p>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{action.title}</h3>
+            <p className="text-gray-600 dark:text-gray-400">{action.description}</p>
           </Link>
         ))}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent Activity */}
-        <div className="bg-white rounded-xl p-6 border border-gray-200">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Recent Activity</h2>
-            <Calendar className="h-5 w-5 text-gray-400" />
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Recent Activity</h2>
+            <Calendar className="h-5 w-5 text-gray-400 dark:text-gray-500" />
           </div>
           <div className="space-y-4">
             {recentActivities.map((activity) => (
-              <div key={activity.id} className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+              <div key={activity.id} className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                   activity.type === 'test' ? 'bg-green-100' : 'bg-blue-100'
                 }`}>
@@ -118,7 +118,7 @@ export default function StudentHome() {
                   )}
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-gray-900">{activity.title}</p>
+                  <p className="font-medium text-gray-900 dark:text-white">{activity.title}</p>
                   <div className="flex items-center text-sm text-gray-500">
                     {activity.type === 'test' && activity.score && (
                       <span className="text-green-600 font-medium mr-2">Score: {activity.score}%</span>
@@ -135,44 +135,44 @@ export default function StudentHome() {
         </div>
 
         {/* Performance Chart */}
-        <div className="bg-white rounded-xl p-6 border border-gray-200">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Performance Trend</h2>
-            <TrendingUp className="h-5 w-5 text-gray-400" />
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Performance Trend</h2>
+            <TrendingUp className="h-5 w-5 text-gray-400 dark:text-gray-500" />
           </div>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">This Week</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">This Week</span>
               <div className="flex items-center space-x-2">
-                <div className="w-32 bg-gray-200 rounded-full h-2">
+                <div className="w-32 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                   <div className="bg-green-500 h-2 rounded-full" style={{ width: '85%' }}></div>
                 </div>
-                <span className="text-sm font-medium text-gray-900">85%</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-white">85%</span>
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">Last Week</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">Last Week</span>
               <div className="flex items-center space-x-2">
-                <div className="w-32 bg-gray-200 rounded-full h-2">
+                <div className="w-32 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                   <div className="bg-blue-500 h-2 rounded-full" style={{ width: '78%' }}></div>
                 </div>
-                <span className="text-sm font-medium text-gray-900">78%</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-white">78%</span>
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">2 Weeks Ago</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">2 Weeks Ago</span>
               <div className="flex items-center space-x-2">
-                <div className="w-32 bg-gray-200 rounded-full h-2">
+                <div className="w-32 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                   <div className="bg-purple-500 h-2 rounded-full" style={{ width: '92%' }}></div>
                 </div>
-                <span className="text-sm font-medium text-gray-900">92%</span>
+                <span className="text-sm font-medium text-gray-900 dark:text-white">92%</span>
               </div>
             </div>
           </div>
-          <div className="mt-6 p-4 bg-green-50 rounded-lg">
+          <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
             <div className="flex items-center space-x-2">
               <TrendingUp className="h-5 w-5 text-green-600" />
-              <span className="text-sm font-medium text-green-800">+7% improvement this week!</span>
+              <span className="text-sm font-medium text-green-800 dark:text-green-400">+7% improvement this week!</span>
             </div>
           </div>
         </div>

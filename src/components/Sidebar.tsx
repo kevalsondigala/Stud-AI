@@ -57,29 +57,29 @@ export default function Sidebar({ menuItems, collapsed, onCollapse, user }: Side
   };
 
   return (
-    <div className={`fixed left-0 top-0 h-full bg-white border-r border-gray-200 transition-all duration-300 z-30 ${
+    <div className={`fixed left-0 top-0 h-full bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 transition-all duration-300 z-30 ${
       collapsed ? 'w-16' : 'w-64'
     }`}>
       <div className="flex flex-col h-full">
         {/* Header */}
-        <div className="p-4 border-b border-gray-200">
+        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between">
             {!collapsed && (
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                   <Brain className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xl font-bold text-gray-900">stud.ai</span>
+                <span className="text-xl font-bold text-gray-900 dark:text-white">stud.ai</span>
               </div>
             )}
             <button
               onClick={() => onCollapse(!collapsed)}
-              className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
               {collapsed ? (
-                <ChevronRight className="h-4 w-4 text-gray-600" />
+                <ChevronRight className="h-4 w-4 text-gray-600 dark:text-gray-400" />
               ) : (
-                <ChevronLeft className="h-4 w-4 text-gray-600" />
+                <ChevronLeft className="h-4 w-4 text-gray-600 dark:text-gray-400" />
               )}
             </button>
           </div>
@@ -87,7 +87,7 @@ export default function Sidebar({ menuItems, collapsed, onCollapse, user }: Side
 
         {/* User Profile */}
         {user && (
-          <div className="p-4 border-b border-gray-200">
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center space-x-3">
               <img
                 src={user.avatar || 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=2'}
@@ -96,7 +96,7 @@ export default function Sidebar({ menuItems, collapsed, onCollapse, user }: Side
               />
               {!collapsed && (
                 <div>
-                  <p className="text-sm font-medium text-gray-900">{user.name}</p>
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">{user.name}</p>
                   <p className="text-xs text-gray-500 capitalize">{user.role}</p>
                 </div>
               )}
@@ -117,8 +117,8 @@ export default function Sidebar({ menuItems, collapsed, onCollapse, user }: Side
                     className={({ isActive }) =>
                       `flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors group ${
                         isActive
-                          ? 'bg-blue-50 text-blue-700 border border-blue-200'
-                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                          ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800'
+                          : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'
                       }`
                     }
                   >
@@ -132,10 +132,10 @@ export default function Sidebar({ menuItems, collapsed, onCollapse, user }: Side
         </nav>
 
         {/* Footer */}
-        <div className="p-4 border-t border-gray-200">
+        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
           <button
             onClick={toggleTheme}
-            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors w-full mb-2"
+            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors w-full mb-2"
           >
             {user?.theme === 'dark' ? (
               <Sun className="h-5 w-5" />
@@ -149,14 +149,14 @@ export default function Sidebar({ menuItems, collapsed, onCollapse, user }: Side
             )}
           </button>
           <button
-            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors w-full"
+            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors w-full"
           >
             <Settings className="h-5 w-5" />
             {!collapsed && <span className="font-medium">Settings</span>}
           </button>
           <button
             onClick={handleLogout}
-            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-red-600 hover:bg-red-50 transition-colors w-full mt-2"
+            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors w-full mt-2"
           >
             <LogOut className="h-5 w-5" />
             {!collapsed && <span className="font-medium">Logout</span>}

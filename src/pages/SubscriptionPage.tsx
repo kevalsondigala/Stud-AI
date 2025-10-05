@@ -176,7 +176,7 @@ export default function SubscriptionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -188,16 +188,16 @@ export default function SubscriptionPage() {
             <span>Back to Dashboard</span>
           </button>
           
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Choose Your Plan
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {isStudent 
               ? "Unlock your learning potential with AI-powered study tools"
               : "Streamline your teaching with advanced question generation tools"
             }
           </p>
-          <div className="mt-4 inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+          <div className="mt-4 inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-400 rounded-full text-sm font-medium">
             <span className="mr-2">🎉</span>
             Limited time offer - Save up to 33%!
           </div>
@@ -208,10 +208,10 @@ export default function SubscriptionPage() {
           {plans.map((plan) => (
             <div
               key={plan.id}
-              className={`relative bg-white rounded-2xl shadow-lg border-2 transition-all duration-300 hover:shadow-xl ${
+              className={`relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg border-2 transition-all duration-300 hover:shadow-xl ${
                 plan.popular 
-                  ? 'border-blue-500 scale-105' 
-                  : 'border-gray-200 hover:border-blue-300'
+                  ? 'border-blue-500 dark:border-blue-400 scale-105' 
+                  : 'border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600'
               }`}
             >
               {plan.popular && (
@@ -233,26 +233,27 @@ export default function SubscriptionPage() {
                     {getPlanIcon(plan.name)}
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                  <p className="text-gray-600 text-sm">{plan.description}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{plan.name}</h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">{plan.description}</p>
                 </div>
 
                 {/* Pricing */}
                 <div className="text-center mb-6">
                   <div className="flex items-center justify-center space-x-2">
-                    <span className="text-4xl font-bold text-gray-900">
+                    <span className="text-4xl font-bold text-gray-900 dark:text-white">
                       ₹{plan.price}
                     </span>
                     {plan.originalPrice && (
-                      <span className="text-lg text-gray-500 line-through">
+                      <span className="text-lg text-gray-500 dark:text-gray-400 line-through">
                         ₹{plan.originalPrice}
                       </span>
                     )}
                   </div>
-                  <p className="text-gray-600 mt-1">
+                  <p className="text-gray-600 dark:text-gray-400 mt-1">
                     {plan.price === 0 ? plan.period : `per ${plan.period}`}
                   </p>
                   {plan.originalPrice && (
-                    <div className="mt-2 inline-flex items-center px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-medium">
+                    <div className="mt-2 inline-flex items-center px-2 py-1 bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-400 rounded text-xs font-medium">
                       Save ₹{plan.originalPrice - plan.price}
                     </div>
                   )}
@@ -263,7 +264,7 @@ export default function SubscriptionPage() {
                   {plan.features.map((feature, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm">{feature}</span>
+                      <span className="text-gray-700 dark:text-gray-300 text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -274,7 +275,7 @@ export default function SubscriptionPage() {
                   disabled={loading && selectedPlan === plan.id}
                   className={`w-full py-3 px-4 rounded-xl font-medium transition-all duration-300 ${
                     plan.id === 'free'
-                      ? 'bg-gray-100 text-gray-500 cursor-not-allowed'
+                      ? 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
                       : `${plan.buttonColor} text-white hover:scale-105 active:scale-95`
                   }`}
                 >
@@ -294,32 +295,32 @@ export default function SubscriptionPage() {
 
         {/* FAQ Section */}
         <div className="mt-16 max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
             Frequently Asked Questions
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">Can I change my plan anytime?</h3>
-              <p className="text-gray-600 text-sm">Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</p>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Can I change my plan anytime?</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">Is there a free trial?</h3>
-              <p className="text-gray-600 text-sm">Our Free plan gives you access to core features. You can upgrade anytime to unlock premium features.</p>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Is there a free trial?</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">Our Free plan gives you access to core features. You can upgrade anytime to unlock premium features.</p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">What payment methods do you accept?</h3>
-              <p className="text-gray-600 text-sm">We accept all major credit cards, debit cards, UPI, and net banking for Indian users.</p>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">What payment methods do you accept?</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">We accept all major credit cards, debit cards, UPI, and net banking for Indian users.</p>
             </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">Do you offer refunds?</h3>
-              <p className="text-gray-600 text-sm">Yes, we offer a 30-day money-back guarantee if you're not satisfied with our service.</p>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Do you offer refunds?</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">Yes, we offer a 30-day money-back guarantee if you're not satisfied with our service.</p>
             </div>
           </div>
         </div>
 
         {/* Trust Indicators */}
         <div className="mt-12 text-center">
-          <div className="flex items-center justify-center space-x-8 text-gray-500">
+          <div className="flex items-center justify-center space-x-8 text-gray-500 dark:text-gray-400">
             <div className="flex items-center space-x-2">
               <Check className="h-5 w-5 text-green-500" />
               <span className="text-sm">30-day money back</span>

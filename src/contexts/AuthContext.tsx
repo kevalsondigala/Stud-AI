@@ -128,6 +128,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const toggleTheme = () => {
     if (user) {
       const newTheme = user.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.classList.toggle('dark', newTheme === 'dark');
       const updatedUser = { ...user, theme: newTheme };
       setUser(updatedUser);
       localStorage.setItem('studai_user', JSON.stringify(updatedUser));

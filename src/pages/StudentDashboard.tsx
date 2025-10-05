@@ -28,7 +28,7 @@ export default function StudentDashboard() {
   const [chatbotOpen, setChatbotOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-slate-50 dark:bg-gray-900 flex">
       <Sidebar
         menuItems={studentMenuItems}
         collapsed={sidebarCollapsed}
