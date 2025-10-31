@@ -6,6 +6,7 @@ interface User {
   name: string;
   role: 'student' | 'educator';
   avatar?: string;
+  theme?: 'light' | 'dark';
   onboardingComplete?: boolean;
   profile?: {
     class: string;
@@ -78,7 +79,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
       email,
       name,
       role,
-      theme: 'light',
       avatar: `https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=2`
     };
     
@@ -128,6 +128,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const toggleTheme = () => {
     if (user) {
       const newTheme = user.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.classList.toggle('dark', newTheme === 'dark');
       document.documentElement.classList.toggle('dark', newTheme === 'dark');
       const updatedUser = { ...user, theme: newTheme };
       setUser(updatedUser);

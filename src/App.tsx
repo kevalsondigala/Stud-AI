@@ -38,6 +38,9 @@ function AppRoutes() {
   useEffect(() => {
     if (user?.theme) {
       document.documentElement.classList.toggle('dark', user.theme === 'dark');
+    } else {
+      // Default to light mode if no theme is set
+      document.documentElement.classList.remove('dark');
     }
   }, [user?.theme]);
 
